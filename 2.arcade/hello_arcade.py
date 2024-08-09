@@ -14,6 +14,7 @@ class HelloWindow(arcade.Window):
     
     def on_draw(self):
         arcade.start_render()
+        arcade.draw_ellipse_outline(200, 100, 100, 70, arcade.color.AERO_BLUE, 3)
 
 window = HelloWindow(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE)
 
