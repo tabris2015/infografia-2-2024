@@ -5,7 +5,7 @@ import math
 # definicion de constantes
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
-SCREEN_TITLE = "Primitivas de arcade"
+SCREEN_TITLE = "Matrices de transformacion"
 
 
 class MyWindow(arcade.Window):
@@ -22,30 +22,15 @@ class MyWindow(arcade.Window):
     def on_draw(self):
         arcade.start_render()
         self.draw_shape(self.vertices)
-        new = self.scale(self.vertices, 2)
-        self.draw_shape(new)
-        # new = self.rotate(self.vertices, 30, 100, 100)
-        # self.draw_shape(new)
-        # for i in range(11):
-        #     new = self.rotate(new, 30, 100, 100)
-        #     self.draw_shape(new)
 
     def translate(self, vertices, dx, dy):
-        return [(x + dx, y + dy) for x, y in vertices]
+        pass
 
     def rotate(self, vertices, angle, px=0, py=0):
-        new_vertices = []
-        angle_radians = math.radians(angle)
-        for x, y in vertices:
-            new_vertices.append(
-                ((x - px) * math.cos(angle_radians) - (y - py) * math.sin(angle_radians) + px,
-                 (x - px) * math.sin(angle_radians) + (y - py) * math.cos(angle_radians) + py)
-            )
-
-        return new_vertices
+        pass
     
     def scale(self, vertices, s):
-        return [(s * x, s * y) for x, y in vertices]
+        pass
 
     def draw_shape(self, vertices):
         for x, y in vertices:
