@@ -40,7 +40,10 @@ class App(arcade.Window):
         
         if symbol == arcade.key.LEFT or symbol == arcade.key.RIGHT:
             self.tank.angular_speed = 0
-            
+    
+    def on_mouse_press(self, x: int, y: int, button: int, modifiers: int):
+        self.tank.shoot(110)
+        
     def on_update(self, delta_time: float):
         self.tank.update(delta_time)
 
