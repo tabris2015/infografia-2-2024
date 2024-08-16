@@ -50,9 +50,9 @@ class App(arcade.Window):
         )
         self.cube.translate(399, 399, 0)
         self.cube.scale(100, 100, 100)
-        self.cube.rotate(0.1, "x")
+        self.cube.rotate(-0.3, "x")
         self.cube.rotate(0.3, "y")
-        self.cube.rotate(0.1, "z")
+        # self.cube.rotate(0.7, "z")
     
     def on_update(self, delta_time: float):
         self.cube.rotate(delta_time, "y")
