@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://btn7c628g1hg7"]
+
+[ext_resource type="PackedScene" uid="uid://bcwa6t6salnsw" path="res://scenes/skeleton.tscn" id="1_kymr8"]
+[ext_resource type="PackedScene" uid="uid://by41uby6giys3" path="res://scenes/knight.tscn" id="2_y6syu"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Skeleton" parent="." instance=ExtResource("1_kymr8")]
+position = Vector2(516, 95)
+scale = Vector2(4, 4)
+
+[node name="Knight" parent="." instance=ExtResource("2_y6syu")]
+position = Vector2(360, 120)

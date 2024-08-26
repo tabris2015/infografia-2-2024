@@ -1,0 +1,100 @@
+[gd_scene load_steps=27 format=3 uid="uid://by41uby6giys3"]
+
+[ext_resource type="Texture2D" uid="uid://dypg3dwln7vn2" path="res://assets/img/knight/Idle (1).png" id="1_bdwls"]
+[ext_resource type="Script" path="res://scripts/knight.gd" id="1_u0j0p"]
+[ext_resource type="Texture2D" uid="uid://b575jjlwcxcw2" path="res://assets/img/knight/Idle (2).png" id="3_ye4du"]
+[ext_resource type="Texture2D" uid="uid://ccd30s78vn2ek" path="res://assets/img/knight/Idle (3).png" id="4_w2xi2"]
+[ext_resource type="Texture2D" uid="uid://3ja70f5ud038" path="res://assets/img/knight/Idle (4).png" id="5_bayvc"]
+[ext_resource type="Texture2D" uid="uid://couuaaiybft4y" path="res://assets/img/knight/Idle (5).png" id="6_6wqcq"]
+[ext_resource type="Texture2D" uid="uid://dha4oy6dsrgnq" path="res://assets/img/knight/Idle (6).png" id="7_b4ixg"]
+[ext_resource type="Texture2D" uid="uid://n4xmy0ep6uo5" path="res://assets/img/knight/Idle (7).png" id="8_dffxw"]
+[ext_resource type="Texture2D" uid="uid://dxdja6clny4gf" path="res://assets/img/knight/Idle (8).png" id="9_lw0pg"]
+[ext_resource type="Texture2D" uid="uid://bldomnf54vq6k" path="res://assets/img/knight/Idle (9).png" id="10_g1r57"]
+[ext_resource type="Texture2D" uid="uid://cwdxrkgkh123x" path="res://assets/img/knight/Idle (10).png" id="11_fqwwh"]
+[ext_resource type="Texture2D" uid="uid://vc6ulkqgxkvh" path="res://assets/img/knight/Attack (1).png" id="12_ah68k"]
+[ext_resource type="Texture2D" uid="uid://ct06lk1ihrm4b" path="res://assets/img/knight/Attack (2).png" id="13_71vg3"]
+[ext_resource type="Texture2D" uid="uid://cb0ttfvh6rwp0" path="res://assets/img/knight/Attack (3).png" id="14_vidoe"]
+[ext_resource type="Texture2D" uid="uid://c7gt3fxu04xic" path="res://assets/img/knight/Attack (4).png" id="15_r7vkl"]
+[ext_resource type="Texture2D" uid="uid://dagoxortw75ju" path="res://assets/img/knight/Attack (5).png" id="16_gym8t"]
+[ext_resource type="Texture2D" uid="uid://da7o6an2c1j8q" path="res://assets/img/knight/Attack (6).png" id="17_vboe8"]
+[ext_resource type="Texture2D" uid="uid://dcrgmggj3hviu" path="res://assets/img/knight/Attack (7).png" id="18_ohnu8"]
+[ext_resource type="Texture2D" uid="uid://uc2sv70vdo5h" path="res://assets/img/knight/Attack (8).png" id="19_qe3if"]
+[ext_resource type="Texture2D" uid="uid://bns80do41b8p8" path="res://assets/img/knight/Attack (9).png" id="20_7l0a6"]
+[ext_resource type="Texture2D" uid="uid://cb113pp3c5p7k" path="res://assets/img/knight/Attack (10).png" id="21_sgibn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hpanl"]
+radius = 29.0
+height = 112.0
+
+[sub_resource type="Animation" id="Animation_kocrt"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_bdwls"), ExtResource("3_ye4du"), ExtResource("4_w2xi2"), ExtResource("5_bayvc"), ExtResource("6_6wqcq"), ExtResource("7_b4ixg"), ExtResource("8_dffxw"), ExtResource("9_lw0pg"), ExtResource("10_g1r57"), ExtResource("11_fqwwh")]
+}
+
+[sub_resource type="Animation" id="Animation_226o2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_bdwls")]
+}
+
+[sub_resource type="Animation" id="Animation_sijpd"]
+resource_name = "Attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("12_ah68k"), ExtResource("13_71vg3"), ExtResource("14_vidoe"), ExtResource("15_r7vkl"), ExtResource("16_gym8t"), ExtResource("17_vboe8"), ExtResource("18_ohnu8"), ExtResource("19_qe3if"), ExtResource("20_7l0a6"), ExtResource("21_sgibn")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rfl8n"]
+_data = {
+"Attack": SubResource("Animation_sijpd"),
+"Idle": SubResource("Animation_kocrt"),
+"RESET": SubResource("Animation_226o2")
+}
+
+[node name="Knight" type="CharacterBody2D"]
+script = ExtResource("1_u0j0p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_bdwls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 3)
+shape = SubResource("CapsuleShape2D_hpanl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rfl8n")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
