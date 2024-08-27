@@ -1,18 +1,23 @@
 extends CharacterBody2D
 
-var is_attacking = false
-@onready var player = $AnimationPlayer
+const MAX_SPEED = 80
+const FRICTION = 500
 
-func _ready() -> void:
-	player.play("Idle")
+@onready var state_machine = $AnimationTree.get("parameters/playback")
+
+func _physics_process(delta: float) -> void:
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	input_vector.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	input_vector = input_vector.normalized()
 	
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		player.play("Attack")
-		is_attacking = true
-
-	if not is_attacking:
-		player.play("Idle")
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	is_attacking = false
+	if input_vector != Vector2.ZERO:
+		# en movimiento
+		state_machine.travel("Run")
+	else:
+		state_machine.travel("Idle")
+	
+	velocity = MAX_SPEED * input_vector
+	
+	move_and_slide()
+		
