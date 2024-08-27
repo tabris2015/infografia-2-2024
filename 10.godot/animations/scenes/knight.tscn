@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://by41uby6giys3"]
+[gd_scene load_steps=66 format=3 uid="uid://by41uby6giys3"]
 
 [ext_resource type="Texture2D" uid="uid://dypg3dwln7vn2" path="res://assets/img/knight/Idle (1).png" id="1_bdwls"]
 [ext_resource type="Script" path="res://scripts/knight.gd" id="1_u0j0p"]
@@ -341,6 +341,9 @@ states/Run/position = Vector2(559.19, 149.592)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_vjnk7"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_gtl6q"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_i7dog"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_22515"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_ycjl7"), "Idle", "Dead", SubResource("AnimationNodeStateMachineTransition_6jwya"), "Dead", "End", SubResource("AnimationNodeStateMachineTransition_371xe"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_lt347"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_npu7k")]
 graph_offset = Vector2(105.03, -75.0973)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ty5b"]
+radius = 39.0
+
 [node name="Knight" type="CharacterBody2D"]
 script = ExtResource("1_u0j0p")
 
@@ -363,4 +366,15 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_eb3dh")
 anim_player = NodePath("../AnimationPlayer")
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, -5)
+shape = SubResource("CircleShape2D_8ty5b")
+debug_color = Color(0.902462, 0.308609, 0, 0.42)
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
