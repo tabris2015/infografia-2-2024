@@ -4,6 +4,7 @@ const ACCELERATION = 500
 const FRICTION = 500
 const MAX_SPEED = 100
 
+
 # estados del player
 enum {
 	MOVE,
@@ -13,6 +14,7 @@ enum {
 
 # variable de estado actual
 var state = MOVE
+@export var hp = 100
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = $AnimationTree.get("parameters/playback")
@@ -55,3 +57,8 @@ func attack_state(delta):
 
 func attack_anim_finished():
 	state = MOVE
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	print("OUCH")
+	hp -= 10
